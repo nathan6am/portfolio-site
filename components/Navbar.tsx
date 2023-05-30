@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
-export default function Navbar() {
-  const [activeTab, setActiveTab] = useState<string>("home");
-
+import { useRouter } from "next/router";
+interface NavbarProps {
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+  activeTab: string;
+}
+export default function Navbar({ setActiveTab, activeTab }: NavbarProps) {
   const [hideOnScroll, setHideOnScroll] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
-
+  const router = useRouter();
+  const pathName = router.pathname;
+  useEffect(() => {
+    if (pathName === "/") {
+      setActiveTab("home");
+    } else if (pathName === "/#about") {
+      setActiveTab("about");
+    } else if (pathName === "/#projects") {
+      setActiveTab("projects");
+    } else if (pathName === "/#contact") {
+      setActiveTab("contact");
+    }
+  }, [pathName]);
   useScrollPosition(
     ({ prevPos, currPos }) => {
       const isShow = currPos.y > prevPos.y || currPos.y > -100;
@@ -44,15 +59,16 @@ export default function Navbar() {
       animate={animation}
       variants={variants}
       className={`${
-        scrolled ? "border-b shadow-[0_15px_20px_rgba(5,7,10,0.75)]" : ""
+        scrolled ? "border-b shadow-[0_15px_20px_rgba(5,7,10,0.25)]" : ""
       } fixed flex flex-row justify-between items-center w-full bg-themeDark/[0.5] px-8 h-[80px] backdrop-blur-xl z-[100]  border-white/[0.2]`}
     >
-      <p>logo</p>
+      <p className="font-semibold">Nathan Pho.</p>
 
       <div className="flex flex-row items-center">
         <NavItem
           label="Home"
           onClick={() => {
+            router.push("/", undefined, { scroll: true });
             setActiveTab("home");
           }}
           active={activeTab === "home"}
@@ -60,6 +76,7 @@ export default function Navbar() {
         <NavItem
           label="About Me"
           onClick={() => {
+            router.push("/#about", undefined, { scroll: true });
             setActiveTab("about");
           }}
           active={activeTab === "about"}
@@ -67,6 +84,7 @@ export default function Navbar() {
         <NavItem
           label="Projects"
           onClick={() => {
+            router.push("/#projects", undefined, { scroll: true });
             setActiveTab("projects");
           }}
           active={activeTab === "projects"}
@@ -74,6 +92,7 @@ export default function Navbar() {
         <NavItem
           label="Contact"
           onClick={() => {
+            router.push("/#contact", undefined, { scroll: true });
             setActiveTab("contact");
           }}
           active={activeTab === "contact"}
@@ -90,12 +109,7 @@ type NavItemProps = {
   children?: React.ReactNode;
 };
 
-const NavItem: React.FC<NavItemProps> = ({
-  label,
-  onClick,
-  active,
-  children,
-}) => {
+const NavItem: React.FC<NavItemProps> = ({ label, onClick, active, children }) => {
   return (
     <motion.button
       whileHover={{
@@ -103,10 +117,8 @@ const NavItem: React.FC<NavItemProps> = ({
         transition: { duration: 0.2 },
       }}
       className={`${
-        active
-          ? "text-emerald-400 border-b-2 border-emerald-400"
-          : "hover:text-emerald-400"
-      } mx-4 `}
+        active ? "text-teal-600 border-b-2 text-themeLight border-teal-600" : "hover:text-teal-600"
+      } mx-4 transition-colors duration-300`}
       onClick={onClick}
     >
       {label}

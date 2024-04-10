@@ -32,7 +32,7 @@ export default function SkillRow({ label, icon: Icon, children }: SkillRowProps)
       "li",
       inView
         ? { opacity: 1, scale: 1, filter: "blur(0px)", x: 0 }
-        : { opacity: 0, scale: 0.3, filter: "blur(10px)", x: -60 },
+        : { opacity: 0, scale: 0.3, filter: "blur(0px)", x: -60 },
       {
         duration: 0.2,
         delay: inView ? staggerMenuItems : 0,

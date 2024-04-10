@@ -40,7 +40,7 @@ export default function Home() {
         <section className="container max-w-7xl sm:px-6 px-1 py-6" id="contact">
           <SectionHeader title="Get in Touch" />
           <div className="max-w-4xl mx-auto">
-            <div className="flex md:flex-row md:gap-10">
+            <div className="flex flex-col md:flex-row md:gap-10">
               <Input label="First Name" placeholder="First Name" />
               <Input label="Last Name" placeholder="Last Name" />
             </div>
@@ -114,7 +114,7 @@ function Intro({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
     }
   }, [inView]);
   return (
-    <main ref={ref} className="flex flex-col min-h-screen bg-[#070f1c] px-1 py-4 sm:p-10 items-center relative">
+    <main ref={ref} className="flex flex-col min-h-screen w-full bg-[#070f1c] px-1 py-4 sm:p-10 items-center relative">
       <motion.div style={{ opacity: opacity }} className="flex flex-col container max-w-7xl mt-40 p-6 w-full mb-20">
         <motion.h2
           initial={{ y: -40, opacity: 0 }}
@@ -226,7 +226,7 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
   }, [inView]);
 
   return (
-    <section className="container max-w-7xl sm:px-6 px-1 py-6" id="about">
+    <section className="container max-w-7xl sm:px-6 px-1 py-6 max-w-screen overflow-x-hidden" id="about">
       <SectionHeader title="About Me" />
       <div />
       <div ref={ref} className="flex flex-col md:flex-row py-10 md:py-20 items-center">
@@ -242,7 +242,7 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
           ></img>
         </motion.div>
         <motion.div ref={scrollRef} style={{ opacity }} className="flex flex-col w-full px-2 sm:pl-4 md:pl-10">
-          <div
+          <motion.div
             style={{
               transform: scrollInView ? "none" : "translateX(120px)",
               opacity: scrollInView ? 1 : 0,
@@ -271,14 +271,14 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
               search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved
               over the years, sometimes by accident, sometimes on purpose (injected humour and the like).`}
             </p>
-          </div>
-          <div
+          </motion.div>
+          <motion.div
             style={{
               transform: scrollInView ? "none" : "translateY(40px)",
               opacity: scrollInView ? 1 : 0,
               transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.1s",
             }}
-            className="flex flex-col justify-center lg:justify-start lg:flex-row my-10"
+            className="flex flex-col justify-center lg:justify-start w-full items-center lg:flex-row my-10"
           >
             <Button variant="primary" className="lg:mr-4 " width="sm">
               <BsDownload className="inline mr-2" />
@@ -288,7 +288,7 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
             <Button variant="secondary" outline width="sm">
               Contact Me
             </Button>
-          </div>
+          </motion.div>
           <div ref={opacityRef} />
         </motion.div>
       </div>

@@ -30,7 +30,7 @@ const projectsData: Array<Project> = [
     name: "Chess from Scratch",
     description: "A fully functional online chess GUI and PGN editor built with React, TypeScript and Next.js.",
     tags: ["React", "TypeScript", "Next.js", "Socket.io", "TailwindCSS", "PostgreSQL", "TypeORM"],
-    url: "https://nextchess.dev/",
+    url: "https://next-chess.dev/",
     souceCodeUrl: "https://github.com/nathan6am/chess-from-scratch",
   },
   {
@@ -55,11 +55,7 @@ const projectsData: Array<Project> = [
     description: "My solutions to the Advent of Code 2022 challenges, written in JavaScript/TypeScript.",
     tags: ["JavaScript", "TypeScript", "Node.js"],
   },
-  {
-    name: "ASNE Events",
-    description: "A live event companion app for the American Society of Naval Engineers symposia.",
-    tags: ["React Native", "TypeScript", "Expo", "Redux", "Redux Toolkit", "Express", "MongoDB"],
-  },
+
   {
     name: "Portfolio Website",
     description: "My personal portfolio website built with Next.js, TailwindCSS, and Framer Motion.",

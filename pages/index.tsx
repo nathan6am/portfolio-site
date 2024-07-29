@@ -46,7 +46,10 @@ export default function Home() {
             </div>
             <Input label="Email" placeholder="Email" />
             <span className="flex flex-row items-center mb-1">
-              <label className="block text-themeLight/[0.8] text-md font-medium" htmlFor={"message"}>
+              <label
+                className="block text-themeLight/[0.8] text-md font-medium"
+                htmlFor={"message"}
+              >
                 Message
               </label>
             </span>
@@ -65,7 +68,10 @@ export default function Home() {
             <div className="h-10 mt-10">
               <p className="text-themeLight/[0.6] text-center text-lg">
                 Or email me directly at{" "}
-                <a href="mailto:nathanpho47@gmail.com" className="text-teal-500 hover:text-teal-600">
+                <a
+                  href="mailto:nathanpho47@gmail.com"
+                  className="text-teal-500 hover:text-teal-600"
+                >
                   nathanpho47@gmail.com
                 </a>
               </p>
@@ -114,8 +120,14 @@ function Intro({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
     }
   }, [inView]);
   return (
-    <main ref={ref} className="flex flex-col min-h-screen w-full bg-[#070f1c] px-1 py-4 sm:p-10 items-center relative">
-      <motion.div style={{ opacity: opacity }} className="flex flex-col container max-w-7xl mt-40 p-6 w-full mb-20">
+    <main
+      ref={ref}
+      className="flex flex-col min-h-screen w-full bg-[#070f1c] px-1 py-4 sm:p-10 items-center relative"
+    >
+      <motion.div
+        style={{ opacity: opacity }}
+        className="flex flex-col container max-w-7xl mt-40 p-6 w-full mb-20"
+      >
         <motion.h2
           initial={{ y: -40, opacity: 0 }}
           animate={{ y: 0, opacity: 0.6 }}
@@ -190,8 +202,9 @@ function Intro({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
           className="max-w-[600px] my-2"
         >
           <h2 className="text-xl my-2 ml-1 opacity-60">
-            I am a full-stack JavaScript developer a passion for creating highly functional, responsive, and beautiful
-            applications for the web and mobile.
+            I am a full-stack JavaScript developer a passion for creating highly
+            functional, responsive, and beautiful applications for the web and
+            mobile.
           </h2>
           <motion.button
             style={{ backgroundSize: "200%", backgroundPositionX: "50%" }}
@@ -208,7 +221,11 @@ function Intro({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
   );
 }
 
-function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
+function AboutSection({
+  setActiveTab,
+}: {
+  setActiveTab: (tab: string) => void;
+}) {
   const ref = useRef(null);
   const inView = useInView(ref, { amount: 0.5 });
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -226,10 +243,16 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
   }, [inView]);
 
   return (
-    <section className="container max-w-7xl sm:px-6 px-1 py-6 max-w-screen overflow-x-hidden" id="about">
+    <section
+      className="container max-w-7xl sm:px-6 px-1 py-6 max-w-screen overflow-x-hidden"
+      id="about"
+    >
       <SectionHeader title="About Me" />
       <div />
-      <div ref={ref} className="flex flex-col md:flex-row py-10 md:py-20 items-center">
+      <div
+        ref={ref}
+        className="flex flex-col md:flex-row py-10 md:py-20 items-center"
+      >
         <motion.div className="w-full max-w-sm" style={{ opacity }}>
           <img
             style={{
@@ -241,7 +264,11 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
             className="h-fit max-w-sm w-full object-contain mb-4 md:mb-0 rounded-lg opacity-80"
           ></img>
         </motion.div>
-        <motion.div ref={scrollRef} style={{ opacity }} className="flex flex-col w-full px-2 sm:pl-4 md:pl-10">
+        <motion.div
+          ref={scrollRef}
+          style={{ opacity }}
+          className="flex flex-col w-full px-2 sm:pl-4 md:pl-10"
+        >
           <motion.div
             style={{
               transform: scrollInView ? "none" : "translateX(120px)",
@@ -250,7 +277,10 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
             }}
           >
             <h1 className="text-3xl font-semibold text-teal-500">Nathan Pho</h1>
-            <a href="mailto:nathanpho47@gmail.com" className="text-themeLight/[0.6] hover:text-teal-300/[0.8] text-lg">
+            <a
+              href="mailto:nathanpho47@gmail.com"
+              className="text-themeLight/[0.6] hover:text-teal-300/[0.8] text-lg"
+            >
               nathanpho47@gmail.com
             </a>
 
@@ -264,12 +294,7 @@ function AboutSection({ setActiveTab }: { setActiveTab: (tab: string) => void })
               <IoMdMail className="text-2xl mr-4" />
             </div>
             <p className="text-themeLight/[0.8] text-lg">
-              {`It is a long established fact that a reader will be distracted by the readable content of a page when
-              looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-              letters, as opposed to using 'Content here, content here', making it look like readable English. Many
-              desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a
-              search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved
-              over the years, sometimes by accident, sometimes on purpose (injected humour and the like).`}
+              {`Versatile technology professional with a nontraditional background, combining expertise in IT management, database administration, and full-stack development. Driven by a passion for creating innovative technological solutions that streamline operations and enhance user experiences. Demonstrated ability to rapidly learn and master new technologies, evidenced by the development of complex projects. Seeking to leverage diverse technical skills and creative problem-solving approach to contribute to cutting-edge initiatives in a dynamic technology-driven environment. `}
             </p>
           </motion.div>
           <motion.div

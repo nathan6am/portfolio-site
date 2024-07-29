@@ -8,58 +8,94 @@ import { useInView } from "framer-motion";
 import { useRouter } from "next/router";
 const projectsData: Array<Project> = [
   {
+    name: "Chess from Scratch",
+    description:
+      "A fully functional online chess GUI and PGN editor built with React, TypeScript and Next.js.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "Socket.io",
+      "TailwindCSS",
+      "PostgreSQL",
+      "TypeORM",
+    ],
+    url: "https://next-chess.dev/",
+    souceCodeUrl: "https://github.com/nathan6am/chess-from-scratch",
+  },
+  {
     name: "Trio Card Game",
-    description: "A realtime multiplayer card game built with React, Redux, Node.js, Express, and socket.io.",
+    description:
+      "A realtime multiplayer card game built with React, Redux, Node.js, Express, and socket.io.",
     tags: ["React", "JavaScript", "Node.js", "Express", "socket.io", "Redux"],
     url: "https://trio-card-game.vercel.app/",
     souceCodeUrl: "https://github.com/nathan6am/trio-card-game",
   },
   {
+    name: "Citrus Cooking",
+    description:
+      "A simple react native recipe notebook for saving recipes and creating shopping lists.",
+    tags: [
+      "React Native",
+      "TypeScript",
+      "Expo",
+      "Redux",
+      "Redux Toolkit",
+      "React Navigation",
+    ],
+    souceCodeUrl: "https://github.com/nathan6am/citrus-recipe-notebook",
+  },
+  {
+    name: "F1Bookie",
+    description:
+      "A discord bot for betting fake currency on F1 races, built with Node.js and discord.js.",
+    tags: [
+      "Node.js",
+      "JavaScript",
+      "discord.js",
+      "cheerio",
+      "MongoDB",
+      "puppeteer",
+    ],
+    souceCodeUrl: "https://github.com/nathan6am/F1Bookie",
+  },
+  {
+    name: "Open Wheel Sim Racing",
+    description:
+      "A full stack dashboard application for participating in online sim racing leagues and events.",
+    tags: [
+      "React",
+      "TypeScript",
+      "Next.js",
+      "TailwindCSS",
+      "Node.js",
+      "Passport",
+      "MongoDB",
+      "Express",
+    ],
+    souceCodeUrl: "https://github.com/nathan6am/owsrv2",
+  },
+  {
     name: "BCServices-Inc.com",
-    description: "A static website for a local business built with React, Gatsby, and NetlifyCMS.",
+    description:
+      "A static website for a local business built with React, Gatsby, and NetlifyCMS.",
     tags: ["React", "JavaScript", "Gatsby", "NetlifyCMS", "TailwindCSS"],
     url: "https://bcservices-inc.com/",
   },
   {
-    name: "F1Bookie",
-    description: "A discord bot for betting fake currency on F1 races, built with Node.js and discord.js.",
-    tags: ["Node.js", "JavaScript", "discord.js", "cheerio", "MongoDB", "puppeteer"],
-    souceCodeUrl: "",
+    name: "solid-tree-store",
+    description:
+      "A SolidJS library for managing tree-like data structures with ease and fine-grained reactive updates.",
+    tags: ["SolidJS", "TypeScript"],
+    souceCodeUrl: "https://github.com/nathan6am/ts-chess",
   },
-  {
-    name: "Chess from Scratch",
-    description: "A fully functional online chess GUI and PGN editor built with React, TypeScript and Next.js.",
-    tags: ["React", "TypeScript", "Next.js", "Socket.io", "TailwindCSS", "PostgreSQL", "TypeORM"],
-    url: "https://next-chess.dev/",
-    souceCodeUrl: "https://github.com/nathan6am/chess-from-scratch",
-  },
-  {
-    name: "Citrus Cooking",
-    description: "A simple react native recipe notebook for saving recipes and creating shopping lists.",
-    tags: ["React Native", "TypeScript", "Expo", "Redux", "Redux Toolkit", "React Navigation"],
-  },
-  {
-    name: "Open Wheel Sim Racing",
-    description: "A full stack dashboard application for participating in online sim racing leagues and events.",
-    tags: ["React", "TypeScript", "Next.js", "TailwindCSS", "Node.js", "Passport", "MongoDB", "Express"],
-    souceCodeUrl: "",
-    url: "https://openwheelsimracing.com/",
-  },
-  {
-    name: "React Tree Hook",
-    description: "A custom react hook for dealing with general tree data structures in React.",
-    tags: ["React", "TypeScript", "React Hooks"],
-  },
-  {
-    name: "Advent of Code 2022",
-    description: "My solutions to the Advent of Code 2022 challenges, written in JavaScript/TypeScript.",
-    tags: ["JavaScript", "TypeScript", "Node.js"],
-  },
-
   {
     name: "Portfolio Website",
-    description: "My personal portfolio website built with Next.js, TailwindCSS, and Framer Motion.",
+    description:
+      "My personal portfolio website built with Next.js, TailwindCSS, and Framer Motion.",
     tags: ["React", "TypeScript", "Next.js", "TailwindCSS", "Framer Motion"],
+    souceCodeUrl: "",
+    url: "https://nathanpho.dev/",
   },
 ];
 interface Project {
@@ -71,10 +107,17 @@ interface Project {
   image?: string;
 }
 
-export default function Projects({ setActiveTab }: { setActiveTab: React.Dispatch<React.SetStateAction<string>> }) {
+export default function Projects({
+  setActiveTab,
+}: {
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
+}) {
   const ref = useRef<any>(null);
   const [projectsToShow, setProjectsToShow] = useState<number>(6);
-  const projects = useMemo(() => projectsData.slice(0, projectsToShow), [projectsToShow]);
+  const projects = useMemo(
+    () => projectsData.slice(0, projectsToShow),
+    [projectsToShow]
+  );
   const inView = useInView(ref, { amount: 0.2 });
   const router = useRouter();
   useEffect(() => {
@@ -84,7 +127,11 @@ export default function Projects({ setActiveTab }: { setActiveTab: React.Dispatc
   }, [inView]);
 
   const seeMore = () => {
-    setProjectsToShow(projectsToShow + 3 > projectsData.length ? projectsData.length : projectsToShow + 3);
+    setProjectsToShow(
+      projectsToShow + 3 > projectsData.length
+        ? projectsData.length
+        : projectsToShow + 3
+    );
   };
   const seeLess = () => {
     setProjectsToShow(6);
@@ -95,7 +142,9 @@ export default function Projects({ setActiveTab }: { setActiveTab: React.Dispatc
       <div
         ref={ref}
         className="flex flex-col sm:grid gap-6 gap-y-6 sm:gap-y-8 mt-4 "
-        style={{ gridTemplateColumns: "repeat( auto-fit, minmax(24rem, 1fr) )" }}
+        style={{
+          gridTemplateColumns: "repeat( auto-fit, minmax(24rem, 1fr) )",
+        }}
       >
         {projects.map((project) => (
           <ProjectCard key={project.name} project={project} />
@@ -103,11 +152,23 @@ export default function Projects({ setActiveTab }: { setActiveTab: React.Dispatc
       </div>
       <div className="flex flex-row justify-center items-center w-full my-10">
         {projectsToShow < projectsData.length ? (
-          <Button variant="primary" outline className="mt-10" width="sm" onClick={seeMore}>
+          <Button
+            variant="primary"
+            outline
+            className="mt-10"
+            width="sm"
+            onClick={seeMore}
+          >
             See More
           </Button>
         ) : (
-          <Button variant="primary" outline className="mt-10" width="sm" onClick={seeLess}>
+          <Button
+            variant="primary"
+            outline
+            className="mt-10"
+            width="sm"
+            onClick={seeLess}
+          >
             See Less
           </Button>
         )}
@@ -116,7 +177,11 @@ export default function Projects({ setActiveTab }: { setActiveTab: React.Dispatc
   );
 }
 
-function TagChip({ children }: { children: String | JSX.Element | Array<string | JSX.Element> }) {
+function TagChip({
+  children,
+}: {
+  children: String | JSX.Element | Array<string | JSX.Element>;
+}) {
   return (
     <div className="rounded-full bg-themeLight/[0.1] px-2 py-[2px] text-themeLight/[0.6] text-xs mr-2 mt-2 shadow-sm flex flex-row items-center">
       <AiFillTag className="mr-1 text-themeLight/[0.2]" />
@@ -145,10 +210,17 @@ function ProjectCard({ project }: { project: Project }) {
         <p className="text-themeLight/[0.6] my-1">{project.description}</p>
         <div className="max-w-[10rem]">
           {project.url && (
-            <a href={project.url} target="_blank" rel="noreferrer" className="w-fit">
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              className="w-fit"
+            >
               <div className=" rounded-md py-1 hover:bg-teal-300/[0.4] w-fit group px-2 flex flex-row items-center mt-2">
                 <RxExternalLink className="text-themeLight/[0.8] group-hover:text-themeLight mr-1" />
-                <p className="text-themeLight/[0.8] group-hover:text-themeLight text-sm">Live Site</p>
+                <p className="text-themeLight/[0.8] group-hover:text-themeLight text-sm">
+                  Live Site
+                </p>
               </div>
             </a>
           )}
@@ -157,7 +229,9 @@ function ProjectCard({ project }: { project: Project }) {
             <a href={project.souceCodeUrl} target="_blank" rel="noreferrer">
               <div className=" rounded-md py-1 hover:bg-teal-300/[0.4] w-fit group px-2 flex flex-row items-center">
                 <GithubLogo className="fill-themeLight/[0.8] group-hover:fill-themeLight mr-1 h-[1em] w-[1em]" />
-                <p className="text-themeLight/[0.8] group-hover:text-themeLight text-sm">Source Code</p>
+                <p className="text-themeLight/[0.8] group-hover:text-themeLight text-sm">
+                  Source Code
+                </p>
               </div>
             </a>
           )}
